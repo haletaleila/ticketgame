@@ -12,6 +12,7 @@ async function fetchSeatData() {
 
 function OperaScreens() {
   const [seatData, setSeatData] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]); // 선택된 좌석 정보를 저장할 상태
 
   useEffect(() => {
     async function loadData() {
@@ -21,6 +22,21 @@ function OperaScreens() {
 
     loadData();
   }, []);
+
+  const handleSeatClick = (seat) => {
+    const isAlreadySelected = selectedSeats.some(
+      (selectedSeat) => selectedSeat.id === seat.id
+    );
+
+    if (isAlreadySelected) {
+      setSelectedSeats((prevSelectedSeats) =>
+        prevSelectedSeats.filter((selectedSeat) => selectedSeat.id !== seat.id)
+      );
+    } else {
+      setSelectedSeats((prevSelectedSeats) => [...prevSelectedSeats, seat]);
+    }
+  };
+
   return (
     <>
       <RightLeftDiv>
@@ -29,6 +45,7 @@ function OperaScreens() {
             {seatData.map((seat, index) => (
               <GetAJS
                 key={index}
+                onClick={() => handleSeatClick(seat)}
                 role="button"
                 tabindex="0"
                 title={seat.setName}
@@ -47,7 +64,7 @@ function OperaScreens() {
           </BackImage>
         </Container>
         <Container>
-          <SeatSelection />
+          <SeatSelection selectedSeats={selectedSeats} />
         </Container>
       </RightLeftDiv>
     </>

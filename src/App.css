@@ -1,38 +1,252 @@
-.App {
-  text-align: center;
+@charset "euc-kr";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Dotum", "돋움", arial, sans-serif;
+  font-size: 12px;
+  color: #000;
+  height: 100%;
+}
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+input,
+textarea,
+select,
+td,
+th {
+  font-size: 12px;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+hr,
+legend,
+caption {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  visibility: hidden;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+img,
+fieldset {
+  border: 0 none;
+}
+/*label{cursor:pointer;}*/
+em {
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:link,
+a:visited {
+  color: #686868;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+.hidden_obj {
+  position: absolute;
+  visibility: hidden;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.aaa {
+  zoom: 1;
+}
+.aaa:after {
+  content: "";
+  display: block;
+  overflow: hidden;
+  clear: both;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+caption,
+.blind {
+  display: none;
 }
 
-.App-link {
-  color: #61dafb;
+/* Skip Navigation */
+.skip_Nav {
+  display: block;
+  height: 1px;
+  width: 1px;
+  margin: 0 -1px -1px 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+.skip_Nav:hover,
+.skip_Nav:active,
+.skip_Nav:focus {
+  position: absolute;
+  top: 10px;
+  left: 90px;
+  letter-spacing: -1px;
+  height: 0px;
+  text-indent: 10px;
+  font-size: 11px;
+  color: #333;
+  font: dotum;
+  line-height: 1;
+  text-decoration: none !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  scrollbar-3dlight-color: #ffffff;
+  scrollbar-arrow-color: #c3c3c3;
+  scrollbar-track-color: #ffffff;
+  scrollbar-darkshadow-color: #ffffff;
+  scrollbar-face-color: #ffffff;
+  scrollbar-highlight-color: #c3c3c3;
+  scrollbar-shadow-color: #c3c3c3;
+}
+
+.scrollbars2 {
+  scrollbar-3dlight-color: #ffffff;
+  scrollbar-arrow-color: #c3c3c3;
+  scrollbar-track-color: #ffffff;
+  scrollbar-darkshadow-color: #ffffff;
+  scrollbar-face-color: #ffffff;
+  scrollbar-highlight-color: #c3c3c3;
+  scrollbar-shadow-color: #c3c3c3;
+}
+
+div {
+  font-family: "돋움", "굴림", "Verdana", "Arial";
+  font-size: 12px;
+  color: #636363;
+}
+
+fieldset {
+  margin-left: 20px;
+}
+
+xmp {
+  margin: 5px 0 5px 0;
+}
+
+.StrongLi {
+  font-weight: bold;
+  list-style-type: square;
+}
+
+.SubLi {
+  padding: 10px 0 0 20px;
+  list-style-type: none;
+}
+
+A:link {
+  color: #4f4f4f;
+  text-decoration: none;
+}
+A:active {
+  color: #4f4f4f;
+  text-decoration: none;
+}
+A:visited {
+  color: #4f4f4f;
+  text-decoration: none;
+}
+A:hover {
+  color: #00aa66;
+  text-decoration: underline;
+}
+
+.divList {
+  overflow: auto;
+  width: 330px;
+  height: 200px;
+}
+
+.divList2 {
+  overflow: auto;
+  width: 327px;
+  height: 100px;
+}
+
+.divAlertMsgCss {
+  font-family: "돋움";
+  font-size: 11px;
+  line-height: 17px;
+  color: #666666;
+  text-decoration: none;
+}
+
+.fl_l {
+  float: left !important;
+}
+.fl_r {
+  float: right !important;
+}
+.pl5 {
+  padding-left: 5px !important;
+}
+.col1 {
+  color: #cc3333 !important;
+}
+.col2 {
+  color: #cc6666 !important;
+}
+.col3 {
+  color: #cc0000 !important;
+}
+.bdN {
+  border: 0 !important;
+}
+.pt18 {
+  padding-top: 18px !important;
 }
