@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "setName": "R석 1층 A구역10열",
+    "position": {
+      "top": 211,
+      "left": 126
+    }
+  },
+  {
+    "id": "2",
+    "setName": "R석 1층 A구역11열",
+    "position": {
+      "top": 222,
+      "left": 135
+    }
+  }
+]
