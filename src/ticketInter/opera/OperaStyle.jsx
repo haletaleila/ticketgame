@@ -16,6 +16,7 @@ export const GetAJS = styled.a`
   width: 8px;
   height: 8px;
   transform: rotate(90deg);
+  cursor: pointer;
 `;
 
 const bgImage = `${process.env.PUBLIC_URL}/assets/images/21000636RGN001.gif`;

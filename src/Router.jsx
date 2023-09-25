@@ -10,7 +10,7 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
-          <Route path="opera" element={<OperaScreens />} />
+          <Route path="opera/:seatPlace" element={<OperaScreens />} />
         </Route>
       </Routes>
     </Router>

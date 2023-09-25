@@ -1,18 +1,31 @@
 [
   {
-    "id": "1",
-    "setName": "R석 1층 A구역10열",
-    "position": {
-      "top": 211,
-      "left": 129
-    }
-  },
-  {
-    "id": "2",
-    "setName": "R석 1층 A구역11열",
-    "position": {
-      "top": 222,
-      "left": 138
-    }
+    "id": "opera",
+    "data": [
+      {
+        "id": "1",
+        "seat": "A",
+        "floor": 1,
+        "sector": "R",
+        "col": 10,
+        "position": {
+          "top": 211,
+          "left": 129,
+          "amount": 3
+        }
+      },
+      {
+        "id": "2",
+        "seat": "R",
+        "floor": 1,
+        "sector": "A",
+        "col": 11,
+        "position": {
+          "top": 222,
+          "left": 138.5,
+          "amount": 5
+        }
+      }
+    ]
   }
 ]

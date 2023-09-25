@@ -87,12 +87,7 @@ const SelectedSeat = styled.div`
 const SeatSelector = ({ selectedSeats }) => {
   return (
     <SeatSelect>
-      <Title>
-        <img
-          src="//ticketimage.interpark.com/TicketImage/onestop/stit_seat_02.gif"
-          alt="선택좌석"
-        />
-      </Title>
+      <Title>선택 좌석</Title>
       <EA>
         총&nbsp;
         <span id="SelectedSeatCount" name="SelectedSeatCount">
@@ -122,11 +117,12 @@ const SeatSelector = ({ selectedSeats }) => {
                   <col width="*" />
                 </colgroup>
                 <tbody>
-                  <ul>
-                    {selectedSeats.map((seat, index) => (
-                      <li key={index}>{seat.setName}</li>
-                    ))}
-                  </ul>
+                  {selectedSeats.map((seat, index) => (
+                    <tr key={seat.id}>
+                      <td>{`${seat.seat}석`}</td>
+                      <td>{`${seat.floor}층 ${seat.sector}구역${seat.col}열`}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </SeatTable>
             </SelectedSeat>
