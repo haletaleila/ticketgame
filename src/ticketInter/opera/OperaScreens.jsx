@@ -19,6 +19,8 @@ function getFillColor(seatId, selectedSeats, seatData) {
       selectedSeat.id.split("-")[1] === seatId.split("-")[1]
   );
 
+  // 윈도우로 넘어왔음을 알림.
+
   if (isSelected) {
     return "#000"; // 선택된 좌석은 검은색으로 표시
   }
@@ -98,19 +100,19 @@ function OperaScreens() {
                   <GetAJS
                     key={seatId}
                     onClick={() => handleSeatClick(seatId)}
-                    role="button"
-                    tabindex="0"
+                    role='button'
+                    tabindex='0'
                     title={seatName}
                     top={seat.position.top}
                     left={seat.position.left + i * 10.5}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
+                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'>
                       <g>
                         <rect
-                          width="8"
-                          height="8"
-                          x="0"
-                          y="0"
+                          width='8'
+                          height='8'
+                          x='0'
+                          y='0'
                           fill={getFillColor(seatId, selectedSeats, seatData)} // seatData를 추가로 전달합니다.
                         >
                           <title>{seatName}</title>
