@@ -1,3 +1,5 @@
 import styled from "styled-components";
 
-export const BackImage = styled.div``;
+export const Container = styled.div`
+  position: relative;
+`;
