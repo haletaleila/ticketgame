@@ -1,9 +1,20 @@
 import React from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-function ConcertArea({ coords, code }) {
+const ConcertAreaArea = styled.area`
+  cursor: pointer;
+`;
+
+function ConcertArea({ coords, shape, seatNumber }) {
+  const navigate = useNavigate();
+
+  const handleAreaClick = () => {
+    navigate(`./${seatNumber}`);
+  };
+
   return (
-    // eslint-disable-next-line jsx-a11y/alt-text
-    <area shape="rect" coords={coords} />
+    <ConcertAreaArea shape={shape} coords={coords} onClick={handleAreaClick} />
   );
 }
 

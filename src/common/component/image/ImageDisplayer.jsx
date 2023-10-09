@@ -8,10 +8,16 @@ const StyledImage = styled.img`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-function ImageDisplayer({ region, venue, place }) {
+function ImageDisplayer({ region, venue, place, usemap }) {
   const imageUrl = `/assets/concert/${region}/${venue}/${place}.gif`;
 
-  return <StyledImage src={imageUrl} alt={`${region} ${venue} ${place}`} />;
+  return (
+    <StyledImage
+      src={imageUrl}
+      alt={`${region} ${venue} ${place}`}
+      usemap={usemap}
+    />
+  );
 }
 
 export default ImageDisplayer;

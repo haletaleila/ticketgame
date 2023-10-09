@@ -4,6 +4,7 @@ import OperaScreens from "./ticketInter/opera/OperaScreens";
 import App from "./App";
 import Main from "./Main";
 import ConcertScreens from "./ticketInter/concert/ConcertScreens";
+import SeatMap from "./ticketInter/concert/SeatMap";
 
 function AppRouter() {
   return (
@@ -15,6 +16,10 @@ function AppRouter() {
           <Route
             path='concert/:region/:venue/:place'
             element={<ConcertScreens />}
+          />
+          <Route
+            path='concert/:region/:venue/:place/:seatNumber'
+            element={<SeatMap />}
           />
         </Route>
       </Routes>

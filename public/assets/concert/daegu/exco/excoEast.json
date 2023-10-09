@@ -1,5 +1,105 @@
-[
-  {
-    "id": "test"
-  }
-]
+{
+  "event": {
+    "eventId": 1,
+    "eventName": "임영웅콘서트"
+  },
+  "venue": {
+    "venueId": 1,
+    "venueName": "대구엑스코",
+    "region": "대구"
+  },
+  "place": {
+    "placeId": 1,
+    "venueId": 1,
+    "placeName": "엑스코동쪽"
+  },
+  "seatStatus": {
+    "statusId": 1,
+    "placeId": 1,
+    "seatStatus": "예약 가능"
+  },
+  "seats": [
+    {
+      "seatId": 1,
+      "placeId": 1,
+      "floor": "1층",
+      "sector": "A",
+      "col": 1,
+      "position": {
+        "positionId": 1,
+        "top": 100,
+        "left": 150,
+        "amount": 1
+      }
+    },
+    {
+      "seatId": 2,
+      "placeId": 1,
+      "floor": "1층",
+      "sector": "A",
+      "col": 2,
+      "position": {
+        "positionId": 2,
+        "top": 100,
+        "left": 200,
+        "amount": 1
+      }
+    }
+  ],
+  "floor": [
+    {
+      "floorId": 1,
+      "floorName": "1층"
+    },
+    {
+      "floorId": 2,
+      "floorName": "2층"
+    }
+  ],
+  "seatTypes": [
+    {
+      "typeId": 1,
+      "typeName": "vip 석"
+    },
+    {
+      "typeId": 2,
+      "typeName": "SR석"
+    },
+    {
+      "typeId": 3,
+      "typeName": "R석"
+    },
+    {
+      "typeId": 4,
+      "typeName": "S석"
+    }
+  ],
+  "seatRanges": [
+    {
+      "rangeId": 2,
+      "floorId": 2,
+      "typeId": 1,
+      "rect": {
+        "x1": "172",
+        "y1": "120",
+        "x2": "235",
+        "y2": "201"
+      },
+      "seatNumber": "002"
+    }
+  ],
+  "seatDetails": [
+    {
+      "seatNumber": "002",
+      "col": "2",
+      "range": "28",
+      "typeId": "1"
+    },
+    {
+      "seatNumber": "002",
+      "col": "1",
+      "range": "22",
+      "typeId": "3"
+    }
+  ]
+}
