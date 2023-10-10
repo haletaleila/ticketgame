@@ -13,6 +13,8 @@ function ConcertArea({ coords, shape, seatNumber }) {
     navigate(`./${seatNumber}`);
   };
 
+  console.log(shape);
+
   return (
     <ConcertAreaArea shape={shape} coords={coords} onClick={handleAreaClick} />
   );

@@ -71,7 +71,7 @@
     },
     {
       "typeId": 4,
-      "typeName": "S석"
+      "typeName": "SR석"
     }
   ],
   "seatRanges": [
@@ -80,10 +80,10 @@
       "floorId": 2,
       "typeId": 1,
       "rect": {
-        "x1": "172",
-        "y1": "120",
-        "x2": "235",
-        "y2": "201"
+        "x1": "209",
+        "y1": "140",
+        "x2": "284",
+        "y2": "241"
       },
       "seatNumber": "002"
     }
@@ -92,14 +92,17 @@
     {
       "seatNumber": "002",
       "col": "2",
-      "range": "28",
-      "typeId": "1"
+      "range": "28"
+    },
+    {
+      "seatNumber": "001",
+      "col": "1",
+      "range": "28"
     },
     {
       "seatNumber": "002",
       "col": "1",
-      "range": "22",
-      "typeId": "3"
+      "range": "22"
     }
   ]
 }
