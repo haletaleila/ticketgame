@@ -6,23 +6,25 @@ import Main from "./Main";
 import ConcertScreens from "./ticketInter/concert/ConcertScreens";
 import SeatMap from "./ticketInter/concert/SeatMap";
 import RequestBoard from "./board/RequestBoard";
+import DoubleSelector from "./ticketInter/DoubleSelector";
 
 function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<App />}>
+        <Route path="/" element={<App />}>
           <Route index element={<Main />} />
-          <Route path='opera/:seatPlace' element={<OperaScreens />} />
+          <Route path="opera/:seatPlace" element={<OperaScreens />} />
           <Route
-            path='concert/:region/:venue/:place'
+            path="concert/:region/:venue/:place"
             element={<ConcertScreens />}
           />
           <Route
-            path='concert/:region/:venue/:place/:seatNumber'
+            path="concert/:region/:venue/:place/:seatNumber"
             element={<SeatMap />}
           />
-          <Route path='board/request' element={<RequestBoard />} />
+          <Route path="board/request" element={<RequestBoard />} />
+          <Route path="double" element={<DoubleSelector />} />
         </Route>
       </Routes>
     </Router>
