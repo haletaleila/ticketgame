@@ -1,0 +1,51 @@
+{
+  "event": {
+    "eventId": 1,
+    "eventName": "임영웅콘서트"
+  },
+  "venue": {
+    "venueId": 1,
+    "venueName": "대구엑스코",
+    "region": "대구"
+  },
+  "place": {
+    "placeId": 1,
+    "venueId": 1,
+    "placeName": "엑스코동쪽"
+  },
+  "floor": [
+    {
+      "floorId": 1,
+      "floorName": "1층"
+    },
+    {
+      "floorId": 2,
+      "floorName": "2층"
+    }
+  ],
+  "seatTypes": [
+    {
+      "typeId": 1,
+      "typeName": "vip 석"
+    },
+    {
+      "typeId": 2,
+      "typeName": "SR석"
+    }
+  ],
+  "seatRanges": [
+    {
+      "shape": "rect",
+      "rangeId": 1,
+      "floorId": 1,
+      "typeId": 1,
+      "rect": {
+        "x1": "15",
+        "y1": "150",
+        "x2": "153",
+        "y2": "155"
+      },
+      "seatNumber": "001"
+    }
+  ]
+}

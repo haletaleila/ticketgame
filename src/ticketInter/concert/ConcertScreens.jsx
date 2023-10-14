@@ -3,7 +3,7 @@ import React from "react";
 import ImageDisplayer from "../../common/component/image/ImageDisplayer";
 import FetchJson from "../../common/component/json/FetchJson";
 import { Container } from "./ConcertStyle";
-import ConcertArea from "./\bcomponent/ConcertArea";
+import ConcertArea from "./component/ConcertArea";
 
 function ConcertScreens() {
   const { region, venue, place } = useParams(); // 파람정보를 가져와서 어디로 시트 정보를 보여줄지 결정해보자.
@@ -28,9 +28,10 @@ function ConcertScreens() {
           {data.seatRanges.map((seatRanges) => (
             <ConcertArea
               coords={`${seatRanges.rect.x1},${seatRanges.rect.y1},
-              ${seatRanges.rect.x2},${seatRanges.rect.y2}
-            `}
+              ${seatRanges.rect.x2},${seatRanges.rect.y2}`}
               code={seatRanges.rangeId}
+              shape={seatRanges.shape}
+              seatNumber={seatRanges.seatNumber}
             />
           ))}
         </map>

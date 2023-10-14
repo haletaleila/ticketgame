@@ -4,6 +4,8 @@ import OperaScreens from "./ticketInter/opera/OperaScreens";
 import App from "./App";
 import Main from "./Main";
 import ConcertScreens from "./ticketInter/concert/ConcertScreens";
+import SeatMap from "./ticketInter/concert/SeatMap";
+import RequestBoard from "./board/RequestBoard";
 
 function AppRouter() {
   return (
@@ -16,6 +18,11 @@ function AppRouter() {
             path='concert/:region/:venue/:place'
             element={<ConcertScreens />}
           />
+          <Route
+            path='concert/:region/:venue/:place/:seatNumber'
+            element={<SeatMap />}
+          />
+          <Route path='board/request' element={<RequestBoard />} />
         </Route>
       </Routes>
     </Router>
