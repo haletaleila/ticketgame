@@ -7,6 +7,7 @@ import ConcertScreens from "./ticketInter/concert/ConcertScreens";
 import SeatMap from "./ticketInter/concert/SeatMap";
 import RequestBoard from "./board/RequestBoard";
 import DoubleSelector from "./ticketInter/DoubleSelector";
+import Selector from "./ticketInter/Selector";
 
 function AppRouter() {
   return (
@@ -24,7 +25,7 @@ function AppRouter() {
             element={<SeatMap />}
           />
           <Route path="board/request" element={<RequestBoard />} />
-          <Route path="double" element={<DoubleSelector />} />
+          <Route path="select" element={<Selector />} />
         </Route>
       </Routes>
     </Router>
