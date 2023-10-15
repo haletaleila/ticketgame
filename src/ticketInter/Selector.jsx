@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import DoubleSelector from "./DoubleSelector";
 import SelectLeftComponents from "./SelectLeftComponents";
+import SingleSelector from "./SingleSelector";
 
-const Selector = () => {
+const Selector = ({ onOff }) => {
+  const singleDouble = onOff;
   return (
     <FormSelector>
       <FormSelectorLeft>
-        <DoubleSelector />
+        {singleDouble ? <SingleSelector /> : <DoubleSelector />}
       </FormSelectorLeft>
       <FormSelectorRight>
         <SelectLeftComponents />

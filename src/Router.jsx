@@ -25,7 +25,8 @@ function AppRouter() {
             element={<SeatMap />}
           />
           <Route path="board/request" element={<RequestBoard />} />
-          <Route path="select" element={<Selector />} />
+          <Route path="select" element={<Selector onOff={false} />} />
+          <Route path="single" element={<Selector onOff={true} />} />
         </Route>
       </Routes>
     </Router>
