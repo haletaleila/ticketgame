@@ -7,7 +7,6 @@ const DoubleSelector = () => {
   return (
     <>
       <TableCaller></TableCaller>
-      {/* <ImageCaller height="540" width="600"></ImageCaller> */}
     </>
   );
 };

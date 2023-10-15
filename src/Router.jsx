@@ -8,6 +8,7 @@ import SeatMap from "./ticketInter/concert/SeatMap";
 import RequestBoard from "./board/RequestBoard";
 import DoubleSelector from "./ticketInter/DoubleSelector";
 import Selector from "./ticketInter/Selector";
+import TableCaller from "./ticketInter/table/TableCaller";
 
 function AppRouter() {
   return (
@@ -25,8 +26,12 @@ function AppRouter() {
             element={<SeatMap />}
           />
           <Route path="board/request" element={<RequestBoard />} />
-          <Route path="select" element={<Selector onOff={false} />} />
-          <Route path="single" element={<Selector onOff={true} />} />
+          <Route path="/select" element={<Selector onOff={false} />}>
+            <Route index element={<TableCaller />} />
+            <Route path="map" element={<TableCaller />} />
+            <Route path="details/:id" element={<TableCaller />} />
+          </Route>
+          <Route path="/single" element={<Selector onOff={true} />} />
         </Route>
       </Routes>
     </Router>

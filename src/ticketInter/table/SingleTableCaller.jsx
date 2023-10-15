@@ -65,6 +65,7 @@ const SingleTableCaller = () => {
             <StySelectSeat
               src="http://ticketimage.interpark.com/TMGSNAS/TMGS/S/S_90.gif"
               id="SID2"
+              ㅁㅁ
               style={{ left: "198px", top: "252px", display: "none" }}
               onclick="javascript: SelectSeat('SID2', '1', '1층', 'A구역15열', '11', '001')"
               seatinfo="1층-A구역15열-11"
