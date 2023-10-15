@@ -291,7 +291,6 @@ const BtnWarp = styled.div`
   margin: 5px 0 5px 5px;
   overflow: visible;
   clear: both;
-  *+font-size: 0;
 `;
 
 const Seat2 = styled.table`
