@@ -9,6 +9,7 @@ import RequestBoard from "./board/RequestBoard";
 import DoubleSelector from "./ticketInter/DoubleSelector";
 import Selector from "./ticketInter/Selector";
 import TableCaller from "./ticketInter/table/TableCaller";
+import DoubleInnerSelector from "./ticketInter/table/DoubleInnerSelector";
 
 function AppRouter() {
   return (
@@ -32,6 +33,7 @@ function AppRouter() {
             <Route path="details/:id" element={<TableCaller />} />
           </Route>
           <Route path="/single" element={<Selector onOff={true} />} />
+          <Route path="/test" element={<DoubleInnerSelector />} />
         </Route>
       </Routes>
     </Router>
