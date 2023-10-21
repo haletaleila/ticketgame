@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useNavigate,
-  useParams,
 } from "react-router-dom";
 
-import FetchJson from "../../common/component/json/FetchJson";
 import DoubleInnerSelector from "./DoubleInnerSelector";
 import DoubleOuterSelector from "./DoubleOuterSelector";
 
@@ -25,7 +22,7 @@ const TableCaller = () => {
         path="/"
         element={<DoubleOuterSelector onAreaClick={handleAreaClick} />}
       />
-      <Route path="details/:id" element={<DoubleInnerSelector />} />
+      <Route path="details/:sector" element={<DoubleInnerSelector />} />
     </Routes>
   );
 };

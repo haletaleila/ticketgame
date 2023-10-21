@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import {
+  selectSeat,
+  deselectSeat,
+  selectSelectedSeats,
+} from "../../features/SeatsSlice";
+
 import styled from "styled-components";
+import FetchJson from "../../common/component/json/FetchJson";
 
 const TmgsTable = styled.table`
   display: table;
@@ -44,10 +52,10 @@ const SeatT = styled.span`
   background-color: white;
   width: 60px;
   height: 10px;
-  font-size: 7pt;
+  font-size: 8pt;
   clear: left;
   float: left;
-  padding: 0 10 0 0;
+  padding: 0 10px 0 0;
 `;
 
 const SeatB = styled.span`
@@ -69,27 +77,61 @@ const SeatR = styled.span`
 `;
 
 const DivBr = styled.div`
-  height: 0.8rem;
+  height: 0.7rem;
   content: "";
 `;
 
-const FlexBox = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-const FlexBoxLeft = styled.div`
-  flex: 1;
-`;
-
-const FlexBoxCenter = styled.div`
-  flex: 1;
-`;
-
-const FlexBoxRight = styled.div`
-  flex: 8;
-`;
-
 const DoubleInnerSelector = () => {
+  const { sector } = useParams();
+  const dispatch = useDispatch();
+  const selectedSeats = useSelector(selectSelectedSeats);
+  const [selectedSeatsStyles, setSelectedSeatsStyles] = useState({});
+
+  const handleSeatClick = (seat, sectionName, rowNumber) => {
+    const seatInfo = `${sector}-${sectionName}-${rowNumber}-${seat.position}`;
+    const newSeat = {
+      info: seatInfo,
+      grade: seat.grade,
+    };
+
+    // Check if the seat is already selected
+    const alreadySelected = selectedSeats.some(
+      (selectedSeat) => selectedSeat.info === seatInfo
+    );
+
+    if (alreadySelected) {
+      dispatch(deselectSeat(newSeat)); // If already selected, we dispatch a deselect action.
+    } else {
+      dispatch(selectSeat(newSeat)); // If not selected, we dispatch a select action.
+    }
+
+    // 선택 또는 선택 해제 시, 해당 좌석의 스타일을 업데이트합니다.
+    setSelectedSeatsStyles((prevStyles) => {
+      const newStyles = { ...prevStyles };
+      if (alreadySelected) {
+        delete newStyles[seatInfo]; // 해당 좌석 스타일 제거
+      } else {
+        newStyles[seatInfo] = { backgroundColor: "black" }; // 해당 좌석 스타일 추가
+      }
+      return newStyles;
+    });
+  };
+
+  useEffect(() => {
+    const newStyles = {};
+    selectedSeats.forEach((seat) => {
+      newStyles[seat.info] = { backgroundColor: "black" };
+    });
+
+    setSelectedSeatsStyles(newStyles);
+  }, [selectedSeats]);
+
+  const jsonUrl = `/assets/concert/test/innerseat-${sector}.json`;
+  const { data, loading, error } = FetchJson({ url: jsonUrl });
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <>
       <TmgsTable width="100%" height="100%" cellpadding="0" cellspacing="0">
@@ -132,7 +174,7 @@ const DoubleInnerSelector = () => {
                           align="absmiddle"
                         />{" "}
                         <b>
-                          <font color="#3300FF">248 영역</font>의
+                          <font color="#3300FF">{sector} 영역</font>의
                           좌석배치도입니다
                         </b>
                       </TableTbodyTrTd2>
@@ -178,327 +220,54 @@ const DoubleInnerSelector = () => {
                     </tr>
                   </tbody>
                 </table>
-                <DivBr>
-                  <FlexBox>
-                    <FlexBoxLeft>
-                      <SeatT
-                        align="left"
-                        style={{ width: "100px", paddingLeft: "5px" }}
-                      >
-                        <font
-                          style={{ fontSize: "8pt", color: "#636363" }}
-                          face="굴림"
-                          align="left"
-                        >
-                          48구역 1열
-                        </font>
-                      </SeatT>
-                    </FlexBoxLeft>
-                    <FlexBoxCenter>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatB></SeatB>
-                      <SeatR></SeatR>
-                      <SeatR></SeatR>
-                      <SeatR></SeatR>
-                      <SeatR></SeatR>
-                      <SeatR></SeatR>
-                    </FlexBoxCenter>
-                    <FlexBoxRight></FlexBoxRight>
-                  </FlexBox>
-                </DivBr>
-                <DivBr>
-                  <SeatT
-                    align="left"
-                    style={{ width: "100px", paddingLeft: "5px" }}
-                  >
-                    <font
-                      style={{ fontSize: "8pt", color: "#636363" }}
-                      face="굴림"
-                      align="left"
-                    >
-                      48구역 2열
-                    </font>
-                  </SeatT>
-                  <span
-                    style={{ width: "5", fontSize: "7pt" }}
-                    align="center"
-                  ></span>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatB></SeatB>
-                  <SeatR></SeatR>
-                  <SeatR></SeatR>
-                  <SeatR></SeatR>
-                  <SeatR></SeatR>
-                  <SeatR></SeatR>
-                  <DivBr></DivBr>
-                </DivBr>
-                <SeatT
-                  align="left"
-                  style={{ width: "100px", paddingLeft: "5px" }}
-                >
-                  <font
-                    style={{ fontSize: "8pt", color: "#636363" }}
-                    face="굴림"
-                    align="left"
-                  >
-                    48구역 3열
-                  </font>
-                </SeatT>
-                <span
-                  style={{ width: "5", fontSize: "7pt" }}
-                  align="center"
-                ></span>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <DivBr></DivBr>
-                <SeatT
-                  align="left"
-                  style={{ width: "100px", paddingLeft: "5px" }}
-                >
-                  <font
-                    style={{ fontSize: "8pt", color: "#636363" }}
-                    face="굴림"
-                    align="left"
-                  >
-                    48구역 4열
-                  </font>
-                </SeatT>
-                <span
-                  style={{ width: "5", fontSize: "7pt" }}
-                  align="center"
-                ></span>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <br />
-                <br />
-                <br />
-                <SeatT
-                  align="left"
-                  style={{ width: "100px", paddingLeft: "5px" }}
-                >
-                  <font
-                    style={{ fontSize: "8pt", color: "#636363" }}
-                    face="굴림"
-                    align="left"
-                  >
-                    48구역 5열
-                  </font>
-                </SeatT>
-                <span
-                  style={{ width: "5", fontSize: "7pt" }}
-                  align="center"
-                ></span>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <DivBr>
-                  <br />
-                </DivBr>
-                <SeatT
-                  align="left"
-                  style={{ width: "100px", paddingLeft: "5px" }}
-                >
-                  <font
-                    style={{ fontSize: "8pt", color: "#636363" }}
-                    face="굴림"
-                    align="left"
-                  >
-                    48구역 6열
-                  </font>
-                </SeatT>
-                <span
-                  style={{ width: "5", fontSize: "7pt" }}
-                  align="center"
-                ></span>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <DivBr>
-                  <br />
-                </DivBr>
-                <SeatT
-                  align="left"
-                  style={{ width: "100px", paddingLeft: "5px" }}
-                >
-                  <font
-                    style={{ fontSize: "8pt", color: "#636363" }}
-                    face="굴림"
-                    align="left"
-                  >
-                    48구역 7열
-                  </font>
-                </SeatT>
-                <span
-                  style={{ width: "5", fontSize: "7pt" }}
-                  align="center"
-                ></span>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <DivBr>
-                  <br />
-                </DivBr>
-                <SeatT
-                  align="left"
-                  style={{ width: "100px", paddingLeft: "5px" }}
-                >
-                  <font
-                    style={{ fontSize: "8pt", color: "#636363" }}
-                    face="굴림"
-                    align="left"
-                  >
-                    48구역 8열
-                  </font>
-                </SeatT>
-                <span
-                  style={{ width: "5", fontSize: "7pt" }}
-                  align="center"
-                ></span>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatB></SeatB>
-                <SeatB></SeatB>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
-                <SeatR></SeatR>
+                {data.map((section, sectionIndex) => (
+                  <div key={sectionIndex}>
+                    {section.rows.map((row, rowIndex) => (
+                      <>
+                        <DivBr>
+                          <SeatT
+                            align="left"
+                            style={{ width: "100px", paddingLeft: "5px" }}
+                          >
+                            <font
+                              style={{ fontSize: "8pt", color: "#636363" }}
+                              face="굴림"
+                              align="left"
+                            >
+                              {`${section.sectionName} ${row.rowNumber}`}
+                            </font>
+                          </SeatT>
+                          {row.seats.map((seat, seatIndex) => (
+                            <span key={seatIndex}>
+                              {seat.type === "R" ? (
+                                <SeatR
+                                  style={{
+                                    ...selectedSeatsStyles[
+                                      `${sector}-${section.sectionName}-${row.rowNumber}-${seat.position}`
+                                    ],
+                                    background: seat.color || "whitesmoke",
+                                  }}
+                                  onClick={() =>
+                                    handleSeatClick(
+                                      seat,
+                                      section.sectionName,
+                                      row.rowNumber
+                                    )
+                                  }
+                                />
+                              ) : (
+                                <SeatB />
+                              )}
+                            </span>
+                          ))}
+                        </DivBr>
+                        {Array.from({ length: row.breakAfter }, (_, i) => (
+                          <br key={i} />
+                        ))}
+                      </>
+                    ))}
+                  </div>
+                ))}
               </DivSeatBox>
             </td>
           </tr>

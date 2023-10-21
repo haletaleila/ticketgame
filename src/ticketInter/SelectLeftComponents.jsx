@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const SelectLeftComponents = () => {
+  const selectedSeats = useSelector((state) => state.seats.selectedSeats);
   return (
     <SeatR>
       <Inner>
@@ -203,7 +205,16 @@ const SelectLeftComponents = () => {
                       <col width="75px" />
                       <col width="*" />
                     </colgroup>
-                    <tbody></tbody>
+                    <tbody>
+                      {selectedSeats.map((seat, index) => (
+                        <div key={index}>
+                          <tr>
+                            <th>{seat.grade}</th>
+                            <td>{seat.position}</td>
+                          </tr>
+                        </div>
+                      ))}
+                    </tbody>
                   </Seat2>
                 </div>
               </Seat1ScrollY>
